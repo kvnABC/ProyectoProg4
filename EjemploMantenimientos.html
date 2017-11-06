@@ -1,0 +1,38 @@
+<html>
+<head>
+    
+</head>
+<body>
+    <h1>Mantenimiento de Usuarios</h1>
+    
+    
+    <a href="#">Registrar Nuevos Usuarios</a>
+    
+    <br>
+    <br>
+  <?php
+        include("Conex.php");
+        $link=Conectarse();
+        $result=$link->query("select * from prueba");
+    ?>
+    
+    
+    
+    <table border="1" cellspaciong=1 cellpading=1 width=50%>
+        <tr><td><b>Nombre</b></td><td><b>Apellidos</b></td><td><b>Modificar</b></td><td><b>Borrar</b></td></tr>
+       
+    <?php 
+        while($row = $result->fetch_object()){
+printf("<tr><td>%s</td><td>%s</td><td><a href='ModificarUsuarioEj.php?id=%d'>Modificar</a></td><td><a href='Borrar.php?id=%d'>Borrar</a></td></tr>",$row->Nombre,$row->Apellidos,$row->ID_Prueba,$row->ID_Prueba);
+        }
+        $result->close();
+        $link->close();
+
+    ?>
+        
+     
+    </table>
+    
+</body>
+
+</html>
